@@ -1,0 +1,428 @@
+/****** General ***********/
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+:root {
+    --main-color: #0065FC;
+    --main-bg-color: #F2F2F2;
+    --filter-bg-color: #DEEBFF;
+}
+
+.fa-solid {
+    color: var(--main-color);
+}
+
+header {
+    display: flex; /* Active Flexbox */
+    justify-content: space-between; /* Pousse le logo à gauche et le nav à droite */
+    align-items: center; /* Centre verticalement les éléments */
+    padding: 0 50px; /* Ajoute un peu d'espace sur les côtés */
+    height: 80px; /* Définit une hauteur fixe pour ton menu */
+}
+.search-form {
+    display: flex; /* Aligne les 3 éléments sur une ligne */
+    height: 50px;
+    margin-top: 25px;
+}
+
+.search-form-icon {
+    background-color: #F2F2F2;
+    padding: 15px 18px;
+    border-radius: 15px 0 0 15px; /* Arrondi uniquement à gauche */
+}
+
+.search-form input {
+    border: 1px solid #F2F2F2;
+    padding: 0 15px;
+    font-weight: 700;
+    width: 250px; /* À ajuster selon tes besoins */
+}
+
+.search-form-button {
+    background-color: #0065FC;
+    color: white;
+    border: none;
+    border-radius: 0 15px 15px 0; /* Arrondi uniquement à droite */
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.nav-links {
+    display: flex; /* Aligne les liens "Hébergements" et "Activités" côte à côte */
+    list-style: none; /* Enlève les puces de la liste */
+    gap: 50px; /* Crée un espace précis entre les deux liens */
+}
+
+.nav-links a {
+    text-decoration: none; /* Enlève le souligné bleu par défaut */
+    color: black; /* Couleur du texte */
+    padding-top: 30px; /* Utile pour l'effet de bordure bleue au survol plus tard */
+    /* L'effet au survol */
+}
+.filter-item:hover {
+    background-color: #DEEBFF; /* Bleu très clair */
+}
+
+/* Le conteneur global des filtres */
+.filters {
+    display: flex;
+    align-items: center; /* Aligne verticalement le titre et les boutons */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* La liste des boutons */
+.filter-list {
+    display: flex;
+    flex-wrap: wrap; /* Important pour que les filtres passent à la ligne sur mobile */
+    gap: 20px;
+}
+
+/* Chaque bouton individuel */
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #D9D9D9;
+    border-radius: 35px;
+    padding: 0 19px;
+    height: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s; /* Pour une animation douce au survol */
+    cursor: pointer;
+}
+
+/* Les icônes dans les filtres */
+.filter-item i {
+    color: #0065FC; /* Le bleu Booki */
+}
+
+/* L'effet au survol */
+.filter-item:hover {
+    background-color: #DEEBFF; /* Bleu très clair */
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+/* Le conteneur qui englobe les deux sections */
+.container-hebergements-populaires {
+    display: flex;
+    gap: 40px; /* Espace entre le bloc gris et le bloc des populaires */
+    margin-top: 30px;
+}
+
+/* La section Hébergements (Gris clair) */
+.hebergements {
+    flex: 2; /* Elle prend 2/3 de la largeur */
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+/* La section Populaires (Gris clair aussi) */
+.populaires {
+    flex: 1; /* Elle prend 1/3 de la largeur */
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 22px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 30px; /* Espace entre les cartes */
+    margin-top: 20px;
+}
+
+/* On s'assure que les images des hébergements ne dépassent pas */
+.hebergements .card img {
+    width: 100%;
+    height: 120px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
+}
+
+.card img {
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+.euro {
+    font-weight: 700;
+}
+
+.neutral-star {
+    color: var(--main-bg-color)
+}
+
+/****** Hebergements And Populaires ***********/
+.hebergements-and-populaires {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hebergements-and-populaires section {
+    background-color: var(--main-bg-color);
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/****** Hebergements ***********/
+.hebergements {
+    width: 65%;
+}
+
+/****** Populaires ***********/
+.populaires {
+    width: 32%;
+}
+
+.populaires-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.populaires-cards .card {
+    display: flex;
+    margin-top: 33px;
+}
+
+.populaires-cards img {
+    width: 33%;
+    height: 136px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.populaires-cards .card-content {
+    width: 67%;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.populaires-cards .card-title {
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.populaires-cards .card-subtitle {
+    margin: 0;
+}
+
+.populaires-cards .card-rating {
+    margin-bottom: 5px;
+}
+
+.activites-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes de taille égale */
+    gap: 30px;
+    margin-top: 20px;
+}
+.activites .card {
+    display: flex;
+    flex-direction: column; /* L'image en haut, le texte en bas */
+    height: 440px; /* On impose la hauteur pour qu'elles soient toutes égales */
+    padding: 0; /* Pas de marge blanche interne comme pour les hôtels */
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden; /* Pour que l'image ne dépasse pas des arrondis */
+}
+
+.activites .card img {
+    height: 380px; /* On donne beaucoup de place à l'image */
+    width: 100%;
+    object-fit: cover;
+}
+
+.activites .card-content {
+    padding: 20px; /* On espace le texte du bord */
+    display: flex;
+    align-items: center; /* Centre le titre verticalement dans l'espace restant */
+    flex-grow: 1;
+}
+
+.activites .card img {
+    height: 380px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+
+.footer {
+    display: flex; /* Aligne les 3 colonnes côte à côte */
+    background-color: #F2F2F2; /* Le gris clair de la maquette */
+    padding: 40px 50px; /* Donne de l'air (haut/bas et gauche/droite) */
+    justify-content: space-between; /* Écarte les colonnes au maximum */
+}
+
+.footer-column {
+    flex: 1; /* Chaque colonne prend la même largeur */
+    display: flex;
+    flex-direction: column; /* Range les liens l'un sous l'autre */
+    gap: 15px; /* Espace entre les liens */
+}
+
+.footer-column h3 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: #0065FC; /* Petit effet bleu au survol, c'est le "plus" du pro */
+}
+
+/* Le code ci-dessous correspond à la version responsive uniquement */
+
+/****** Media queries ***********/
+/* Medium devices (tablets, less/equal than 1024px) */
+@media (max-width: 1024px) {
+    .hebergements-and-populaires {
+        flex-direction: column;
+    }
+
+    .hebergements {
+        width: 100%;
+    }
+
+    .populaires {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .populaires-cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .populaires-cards a {
+        width: 30%;
+    }
+
+    .populaires-cards .card-title {
+        font-size: 14px;
+    }
+
+    .populaires-cards .card-subtitle {
+        font-size: 13px;
+    }
+}
+
+/* Small devices (phones, less than 768px) */
+@media (max-width: 767.98px) {
+    /* ... */
+}/* Téléphones */
+@media (max-width: 767.98px) {
+    .main-container {
+        padding: 0; /* On enlève les marges sur les côtés sur mobile */
+    }
+
+    /* La recherche et les filtres passent l'un sous l'autre */
+    .search-form {
+        width: 100%;
+    }
+    
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Les grilles passent à 1 seule colonne */
+    .cards-grid, .activites-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* On change l'ordre : les Populaires passent au-dessus des Hébergements */
+    .container-hebergements-populaires {
+        flex-direction: column-reverse;
+    }
+}
+@media (max-width: 1024px) {
+    /* On passe les deux gros blocs l'un sous l'autre */
+    .container-hebergements-populaires {
+        flex-direction: column;
+    }
+
+    .hebergements, .populaires {
+        width: 100%; /* Ils prennent toute la largeur */
+    }
+
+    /* On ajuste la grille des hébergements à 2 colonnes au lieu de 3 */
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 767px) {
+    .main-container {
+        padding: 0; /* On gagne de la place sur les bords */
+    }
+
+    /* 1. Inversion : Populaires en premier (comme demandé sur la maquette !) */
+    .container-hebergements-populaires {
+        flex-direction: column-reverse; 
+    }
+
+    /* 2. Filtres : on les empile ou on autorise le wrap */
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    /* 3. Grilles : Tout en une seule colonne */
+    .cards-grid, .activites-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 4. On retire les arrondis de la section pour coller aux bords de l'écran */
+    .hebergements, .populaires {
+        border-radius: 0;
+    }
+}
