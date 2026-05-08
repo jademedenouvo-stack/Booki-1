@@ -6,7 +6,7 @@
 :root {
     --main-color: #0065FC;
     --main-bg-color: #F2F2F2;
-    --filter-bg-color: #ff0c0c;
+    --filter-bg-color: #ffffff;
 }
 
 .fa-solid {
@@ -25,7 +25,7 @@ header {
     height: 50px;
     margin-top: 25px;
 }
-.nav-links a:hover {  .
+.nav-links a:hover {
     color: var(--main-color);
     border-top: 3px solid var(--main-color);
 }
@@ -186,10 +186,14 @@ a {
 }
 
 .card {
-    background-color: white;
-    border-radius: 20px;
-    padding: 5px;
-    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
+    /* Un seul chiffre : s'applique aux 4 côtés */
+
+    /* Deux chiffres : [Haut/Bas] [Gauche/Droite] */
+    padding: 10px 20px; 
+
+    /* Ou être très précise */
+    margin-top: 15px;
+    padding-left: 5px;
 }
 
 .card img {
@@ -240,6 +244,8 @@ a {
 .populaires-cards .card {
     display: flex;
     margin-top: 33px;
+    height: 136px;
+    padding: 0; /* On enlève les marges internes pour que l'image puisse prendre toute la hauteur */
 }
 
 .populaires-cards img {
@@ -268,29 +274,44 @@ a {
 }
 
 .populaires-cards .card-rating {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    margin-top: 60px; 
+    margin-bottom: 60px; /* Ajoute cet espace pour repousser le footer */
+    padding: 0 30px;
 }
 
-.activites-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colonnes de taille égale */
-    gap: 30px;
-    margin-top: 20px;
+.activites {
+    margin-top: 60px; /* Espace au-dessus du bloc complet */
+    padding: 0 30px; /* Optionnel : aligne le contenu avec le reste du site si besoin */
+    margin-bottom: 60px; /* Ajoute cet espace pour repousser le footer */
+    padding: 0 30px;
 }
+
+.activites .section-title {
+    margin-bottom: 30px; /* Espace entre le titre et les images */
+}
+.activites-grid {
+    display: flex; /* On aligne en ligne */
+    gap: 30px; /* L'espace entre tes cartes (ce que tu as entouré) */
+    width: 100%;
+}
+
+.activites-grid a {
+    flex: 1;
+    display: flex; /* Permet à la carte de prendre toute la hauteur du lien */
+}
+
 .activites .card {
     display: flex;
-    flex-direction: column; /* L'image en haut, le texte en bas */
-    height: 440px; /* On impose la hauteur pour qu'elles soient toutes égales */
-    padding: 0; /* Pas de marge blanche interne comme pour les hôtels */
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
-    overflow: hidden; /* Pour que l'image ne dépasse pas des arrondis */
+    flex-direction: column;
+    width: 100%; /* Force la largeur */
+    height: 100%; /* Force la carte à remplir le lien <a> */
 }
 
 .activites .card img {
-    height: 380px; /* On donne beaucoup de place à l'image */
+    height: 380px; /* Hauteur fixe pour l'image */
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; /* MAGIQUE : l'image remplit sans se déformer */
 }
 .card:hover {
     transform: scale(1.02); /* Agrandi très légèrement */
@@ -344,134 +365,46 @@ a {
 
 /* Le code ci-dessous correspond à la version responsive uniquement */
 
-/****** Media queries ***********/
-/* Medium devices (tablets, less/equal than 1024px) */
-@media (max-width: 1024px) {
-    .hebergements-and-populaires {
-        flex-direction: column;
-    }
+/****** RESPONSIVE FINAL *******/
 
-    .hebergements {
-        width: 100%
+/* TABLETTE (max 1024px) */
+@media screen and (max-width: 1024px) {
+    .container-hebergements-populaires {
+        flex-direction: column; /* On empile les deux blocs */
     }
-
-    .populaires {
+    .hebergements, .populaires {
         width: 100%;
-        margin-top: 50px;
     }
-
     .populaires-cards {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: row; /* Cartes populaires côte à côte sur tablette */
+        gap: 20px;
     }
-
     .populaires-cards a {
-        width: 30%;
-    }
-
-    .populaires-cards .card-title {
-        font-size: 14px;
-    }
-
-    .populaires-cards .card-subtitle {
-        font-size: 13px;
+        flex: 1;
     }
 }
 
-/* Small devices (phones, less than 768px) */
-@media (max-width: 767.98px) {
-    /* ... */
-}/* Téléphones */
-@media (max-width: 767.98px) {
+/* MOBILE (max 767px) */
+@media screen and (max-width: 767px) {
     .main-container {
-        padding: 0; /* On enlève les marges sur les côtés sur mobile */
+        padding: 0;
     }
-
-    /* La recherche et les filtres passent l'un sous l'autre */
-    .search-form {
-        width: 100%;
-    }
-    
-    .filters {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    /* Les grilles passent à 1 seule colonne */
-    .cards-grid, .activites-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* On change l'ordre : les Populaires passent au-dessus des Hébergements */
+    /* Inversion pour avoir les Populaires en haut (Critère OC) */
     .container-hebergements-populaires {
         flex-direction: column-reverse;
     }
-@media (max-width: 767px) {
-    .button-text { display: none; } /* Cache le texte */
-    .search-mobile-icon { display: block; } /* Affiche la loupe */
-    .search-form-button {
-        border-radius: 15px; /* Bouton carré/arrondi sur mobile */
+    .search-form-button .button-text {
+        display: none; /* Cache le texte 'Rechercher' */
     }
-}
-}
-@media (max-width: 1024px) {
-    /* On passe les deux gros blocs l'un sous l'autre */
-    .container-hebergements-populaires {
-        flex-direction: column;
+    .search-mobile-icon {
+        display: block !important; /* Affiche la loupe */
     }
-
-    .hebergements, .populaires {
-        width: 100%; /* Ils prennent toute la largeur */
-    }
-
-    /* On ajuste la grille des hébergements à 2 colonnes au lieu de 3 */
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 767px) {
-    .main-container {
-        padding: 0; /* On gagne de la place sur les bords */
-    }
-
-    /* 1. Inversion : Populaires en premier (comme demandé sur la maquette !) */
-    .container-hebergements-populaires {
-        flex-direction: column-reverse; 
-    }
-
-    /* 2. Filtres : on les empile ou on autorise le wrap */
     .filters {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
     }
-
-    /* 3. Grilles : Tout en une seule colonne */
     .cards-grid, .activites-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* 4. On retire les arrondis de la section pour coller aux bords de l'écran */
-    .hebergements, .populaires {
-        border-radius: 0;
-    }
-}/* 1. Style par défaut (Desktop) */
-    .container {
-    display: flex;
-    flex-direction: row;
-}
-
-/* 2. Tablette et en dessous */
-@media screen and (max-width: 1024px) {
-    .container {
-        gap: 20px; /* On réduit un peu les espaces */
-    }
-}
-
-/* 3. Mobile (Le plus important pour Booki !) */
-@media screen and (max-width: 767px) {
-    .container {
-        flex-direction: column; /* Tout s'empile verticalement */
+        grid-template-columns: 1fr; /* Une seule colonne sur téléphone */
     }
 }
