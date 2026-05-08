@@ -25,6 +25,10 @@ header {
     height: 50px;
     margin-top: 25px;
 }
+.nav-links a:hover {  .
+    color: var(--main-color);
+    border-top: 3px solid var(--main-color);
+}
 
 .search-form-icon {
     background-color: #F2F2F2;
@@ -111,7 +115,21 @@ body {
     display: flex;
     justify-content: center;
 }
-
+.info-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+.info-icon {
+    border: 1px solid #D9D9D9;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .main-container {
     width: 100%;
     max-width: 1440px;
@@ -265,7 +283,7 @@ a {
     height: 440px; /* On impose la hauteur pour qu'elles soient toutes égales */
     padding: 0; /* Pas de marge blanche interne comme pour les hôtels */
     border-radius: 20px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     overflow: hidden; /* Pour que l'image ne dépasse pas des arrondis */
 }
 
@@ -274,6 +292,12 @@ a {
     width: 100%;
     object-fit: cover;
 }
+.card:hover {
+    transform: scale(1.02); /* Agrandi très légèrement */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
 
 .activites .card-content {
     padding: 20px; /* On espace le texte du bord */
@@ -328,7 +352,7 @@ a {
     }
 
     .hebergements {
-        width: 100%;
+        width: 100%
     }
 
     .populaires {
@@ -383,6 +407,13 @@ a {
     .container-hebergements-populaires {
         flex-direction: column-reverse;
     }
+@media (max-width: 767px) {
+    .button-text { display: none; } /* Cache le texte */
+    .search-mobile-icon { display: block; } /* Affiche la loupe */
+    .search-form-button {
+        border-radius: 15px; /* Bouton carré/arrondi sur mobile */
+    }
+}
 }
 @media (max-width: 1024px) {
     /* On passe les deux gros blocs l'un sous l'autre */
@@ -424,5 +455,23 @@ a {
     /* 4. On retire les arrondis de la section pour coller aux bords de l'écran */
     .hebergements, .populaires {
         border-radius: 0;
+    }
+}/* 1. Style par défaut (Desktop) */
+    .container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* 2. Tablette et en dessous */
+@media screen and (max-width: 1024px) {
+    .container {
+        gap: 20px; /* On réduit un peu les espaces */
+    }
+}
+
+/* 3. Mobile (Le plus important pour Booki !) */
+@media screen and (max-width: 767px) {
+    .container {
+        flex-direction: column; /* Tout s'empile verticalement */
     }
 }
