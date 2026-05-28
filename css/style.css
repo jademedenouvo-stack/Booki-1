@@ -390,6 +390,36 @@ a {
     .main-container {
         padding: 0;
     }
+ @media (max-width: 767px) {
+    .populaires-cards {
+        display: flex;
+        flex-direction: column; /* MAGIQUE : Les cartes s'empilent verticalement ! */
+        gap: 20px; /* Optionnel : pour mettre un bel espace entre chaque carte empilée */
+    }
+}
+@media (max-width: 767px) {
+    header {
+        display: flex;
+        flex-direction: column; /* MAGIQUE : Le menu passe sous le logo ! */
+        align-items: center;    /* Centre le logo et le menu sur l'écran mobile */
+        gap: 20px;              /* Ajoute un peu d'espace vertical entre le logo et tes liens */
+        height: auto;           /* Permet au header de s'agrandir selon sa nouvelle hauteur */
+    }
+}
+@media (max-width: 767px) {
+    /* ... tes autres règles mobiles ... */
+
+    .footer {
+        display: flex;
+        flex-direction: column; /* On empile les colonnes "À propos", "Nos hébergements", etc. */
+        gap: 30px;              /* On crée un bel espace vertical entre chaque bloc */
+        padding: 30px 20px;     /* On donne de l'air à l'intérieur du bloc gris */
+    }
+    
+    .footer-column {
+        width: 100%;            /* Chaque bloc prend toute la largeur pour être bien aligné */
+    }
+}
     /* Inversion pour avoir les Populaires en haut (Critère OC) */
     .container-hebergements-populaires {
         flex-direction: column-reverse;
