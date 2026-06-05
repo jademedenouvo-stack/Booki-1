@@ -1,5 +1,6 @@
 /****** General ***********/
 * {
+    box-sizing: border-box; /* Indispensable pour éviter que les paddings déforment les boîtes */
     font-family: 'Raleway', sans-serif;
 }
 
@@ -13,151 +14,21 @@
     color: var(--main-color);
 }
 
-header {
-    display: flex; /* Active Flexbox */
-    justify-content: space-between; /* Pousse le logo à gauche et le nav à droite */
-    align-items: center; /* Centre verticalement les éléments */
-    padding: 0 50px; /* Ajoute un peu d'espace sur les côtés */
-    height: 80px; /* Définit une hauteur fixe pour ton menu */
-}
-.search-form {
-    display: flex; /* Aligne les 3 éléments sur une ligne */
-    height: 50px;
-    margin-top: 25px;
-}
-.nav-links a:hover {
-    color: var(--main-color);
-    border-top: 3px solid var(--main-color);
+.logo {
+    width: 110px; /* Alerte technique : on définit une largeur fixe */
+    height: auto;  /* Astuce de Lead Dev : 'auto' permet de garder les proportions de l'image sans la déformer ! */
 }
 
-.search-form-icon {
-    background-color: #F2F2F2;
-    padding: 15px 18px;
-    border-radius: 15px 0 0 15px; /* Arrondi uniquement à gauche */
-}
-
-.search-form input {
-    border: 1px solid #F2F2F2;
-    padding: 0 15px;
-    font-weight: 700;
-    width: 250px; /* À ajuster selon tes besoins */
-}
-
-.search-form-button {
-    background-color: #0065FC;
-    color: white;
-    border: none;
-    border-radius: 0 15px 15px 0; /* Arrondi uniquement à droite */
-    padding: 0 20px;
-    cursor: pointer;
-    font-weight: 700;
-}
-.nav-links {
-    display: flex; /* Aligne les liens "Hébergements" et "Activités" côte à côte */
-    list-style: none; /* Enlève les puces de la liste */
-    gap: 50px; /* Crée un espace précis entre les deux liens */
-}
-
-.nav-links a {
-    text-decoration: none; /* Enlève le souligné bleu par défaut */
-    color: black; /* Couleur du texte */
-    padding-top: 30px; /* Utile pour l'effet de bordure bleue au survol plus tard */
-    /* L'effet au survol */
-}
-.filter-item:hover {
-    background-color: #DEEBFF; /* Bleu très clair */
-}
-
-/* Le conteneur global des filtres */
-.filters {
-    display: flex;
-    align-items: center; /* Aligne verticalement le titre et les boutons */
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.filter-title {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-/* La liste des boutons */
-.filter-list {
-    display: flex;
-    flex-wrap: wrap; /* Important pour que les filtres passent à la ligne sur mobile */
-    gap: 20px;
-}
-
-/* Chaque bouton individuel */
-.filter-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 2px solid #D9D9D9;
-    border-radius: 35px;
-    padding: 0 19px;
-    height: 50px;
-    font-weight: 700;
-    transition: background-color 0.3s; /* Pour une animation douce au survol */
-    cursor: pointer;
-}
-
-/* Les icônes dans les filtres */
-.filter-item i {
-    color: #0065FC; /* Le bleu Booki */
-}
-
-/* L'effet au survol */
-.filter-item:hover {
-    background-color: #DEEBFF; /* Bleu très clair */
-}
 body {
     display: flex;
     justify-content: center;
+    margin: 0;
 }
-.info-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 30px 0;
-}
-.info-icon {
-    border: 1px solid #D9D9D9;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .main-container {
     width: 100%;
     max-width: 1440px;
     padding: 0 50px;
-    box-sizing: border-box;
-}
-
-/* Le conteneur qui englobe les deux sections */
-.container-hebergements-populaires {
-    display: flex;
-    gap: 40px; /* Espace entre le bloc gris et le bloc des populaires */
-    margin-top: 30px;
-}
-
-/* La section Hébergements (Gris clair) */
-.hebergements {
-    flex: 2; /* Elle prend 2/3 de la largeur */
-    background-color: #F2F2F2;
-    border-radius: 20px;
-    padding: 30px;
-}
-
-/* La section Populaires (Gris clair aussi) */
-.populaires {
-    flex: 1; /* Elle prend 1/3 de la largeur */
-    background-color: #F2F2F2;
-    border-radius: 20px;
-    padding: 30px;
 }
 
 a {
@@ -170,38 +41,145 @@ a {
     font-size: 22px;
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
-    gap: 30px; /* Espace entre les cartes */
-    margin-top: 20px;
+/****** Header ***********/
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 80px; 
 }
 
-/* On s'assure que les images des hébergements ne dépassent pas */
-.hebergements .card img {
-    width: 100%;
-    height: 120px;
-    border-radius: 20px 20px 0 0;
-    object-fit: cover;
+.nav-links {
+    display: flex; 
+    list-style: none; 
+    gap: 50px; 
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: black; 
+    padding-top: 30px; 
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    color: var(--main-color);
+    border-top: 3px solid var(--main-color);
+}
+
+/****** Search & Recherche ***********/
+.search-form {
+    display: flex; 
+    height: 50px;
+    margin-top: 25px;
+}
+
+.search-form-icon {
+    background-color: #F2F2F2;
+    padding: 15px 18px;
+    border-radius: 15px 0 0 15px; 
+}
+
+.search-form input {
+    border: 1px solid #F2F2F2;
+    padding: 0 15px;
+    font-weight: 700;
+    width: 250px; 
+}
+
+.search-form-button {
+    background-color: #0065FC;
+    color: white;
+    border: none;
+    border-radius: 0 15px 15px 0; 
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/****** Filtres ***********/
+.filters {
+    display: flex;
+    align-items: center; 
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.filter-list {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #D9D9D9;
+    border-radius: 35px;
+    padding: 0 19px;
+    height: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s; 
+    cursor: pointer;
+}
+
+.filter-item i {
+    color: #0065FC; 
+}
+
+.filter-item:hover {
+    background-color: #DEEBFF; 
+}
+
+/****** Info Bar ***********/
+.info-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.info-icon {
+    border: 1px solid #D9D9D9;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/****** Hebergements And Populaires (Général) ***********/
+.container-hebergements-populaires {
+    display: flex;
+    gap: 40px; 
+    margin-top: 30px;
+}
+
+.hebergements, .populaires {
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    padding: 30px;
 }
 
 .card {
-    /* Un seul chiffre : s'applique aux 4 côtés */
-
-    /* Deux chiffres : [Haut/Bas] [Gauche/Droite] */
-    padding: 10px 20px; 
-
-    /* Ou être très précise */
-    margin-top: 15px;
-    padding-left: 5px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card img {
-    object-fit: cover;
-}
-
-.card-title {
-    font-size: 16px;
+.card:hover {
+    transform: scale(1.02); 
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .euro {
@@ -209,64 +187,83 @@ a {
 }
 
 .neutral-star {
-    color: var(--main-bg-color)
+    color: var(--main-bg-color);
 }
 
-/****** Hebergements And Populaires ***********/
-.hebergements-and-populaires {
-    display: flex;
-    justify-content: space-between;
-}
-
-.hebergements-and-populaires section {
-    background-color: var(--main-bg-color);
-    border-radius: 20px;
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-/****** Hebergements ***********/
+/****** Section Hébergements ***********/
 .hebergements {
-    width: 65%;
+    flex: 2; 
 }
 
-/****** Populaires ***********/
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    margin-top: 20px;
+}
+
+.hebergements .card {
+    padding: 5px; /* Petit padding blanc intérieur style hôtel */
+}
+
+.hebergements .card img {
+    width: 100%;
+    height: 124px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.hebergements .card-content {
+    padding: 10px 10px 5px 10px;
+}
+
+.hebergements .card-title {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.hebergements .card-subtitle {
+    margin: 5px 0;
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/****** Section Populaires ***********/
 .populaires {
-    width: 32%;
-}
-
-.populaires-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex: 1; 
 }
 
 .populaires-cards .card {
     display: flex;
     margin-top: 33px;
     height: 136px;
-    padding: 0; /* On enlève les marges internes pour que l'image puisse prendre toute la hauteur */
+    padding: 0; 
 }
 
 .populaires-cards img {
     width: 33%;
-    height: 136px;
+    height: 100%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    object-fit: cover;
 }
 
 .populaires-cards .card-content {
     width: 67%;
-    padding-left: 15px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-sizing: border-box;
 }
 
 .populaires-cards .card-title {
-    margin-top: 10px;
-    margin-bottom: 4px;
+    margin: 0;
+    font-size: 16px;
 }
 
 .populaires-cards .card-subtitle {
@@ -274,112 +271,113 @@ a {
 }
 
 .populaires-cards .card-rating {
-    margin-bottom: 20px;
-    margin-top: 60px; 
-    margin-bottom: 60px; /* Ajoute cet espace pour repousser le footer */
-    padding: 0 30px;
+    margin: 0;
 }
 
+/****** Section Activités ***********/
 .activites {
-    margin-top: 60px; /* Espace au-dessus du bloc complet */
-    padding: 0 30px; /* Optionnel : aligne le contenu avec le reste du site si besoin */
-    margin-bottom: 60px; /* Ajoute cet espace pour repousser le footer */
-    padding: 0 30px;
+    margin-top: 60px; 
+    margin-bottom: 60px; 
 }
 
 .activites .section-title {
-    margin-bottom: 30px; /* Espace entre le titre et les images */
+    margin-bottom: 30px; 
 }
+
 .activites-grid {
-    display: flex; /* On aligne en ligne */
-    gap: 30px; /* L'espace entre tes cartes (ce que tu as entouré) */
+    display: flex; 
+    justify-content: space-between; 
+    gap: 30px; 
     width: 100%;
 }
 
 .activites-grid a {
-    flex: 1;
-    display: flex; /* Permet à la carte de prendre toute la hauteur du lien */
+    flex: 1; 
 }
 
 .activites .card {
     display: flex;
-    flex-direction: column;
-    width: 100%; /* Force la largeur */
-    height: 100%; /* Force la carte à remplir le lien <a> */
+    flex-direction: column;    
+    width: 100%;
+    height: 440px;             
+    background-color: white;   
+    border-radius: 20px;       
+    overflow: hidden;          
+    padding: 0; /* CORRIGÉ : Supprime le gap blanc autour de l'image d'activité ! */
 }
 
 .activites .card img {
-    height: 380px; /* Hauteur fixe pour l'image */
+    height: 380px; 
     width: 100%;
-    object-fit: cover; /* MAGIQUE : l'image remplit sans se déformer */
-}
-.card:hover {
-    transform: scale(1.02); /* Agrandi très légèrement */
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-
-.activites .card-content {
-    padding: 20px; /* On espace le texte du bord */
-    display: flex;
-    align-items: center; /* Centre le titre verticalement dans l'espace restant */
-    flex-grow: 1;
-}
-
-.activites .card img {
-    height: 380px;
-    width: 100%;
+    object-fit: cover; 
     border-radius: 20px 20px 0 0;
 }
 
+.activites .card-content {
+    padding: 20px; 
+    display: flex;
+    align-items: center; 
+    flex-grow: 1; 
+}
 
+.activites .card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/****** Footer ***********/
 .footer {
-    display: flex; /* Aligne les 3 colonnes côte à côte */
-    background-color: #F2F2F2; /* Le gris clair de la maquette */
-    padding: 40px 50px; /* Donne de l'air (haut/bas et gauche/droite) */
-    justify-content: space-between; /* Écarte les colonnes au maximum */
+    display: flex; 
+    background-color: #F2F2F2; 
+    padding: 40px 50px; 
+    justify-content: space-between; 
 }
 
 .footer-column {
-    flex: 1; /* Chaque colonne prend la même largeur */
+    flex: 1; 
     display: flex;
-    flex-direction: column; /* Range les liens l'un sous l'autre */
-    gap: 15px; /* Espace entre les liens */
+    flex-direction: column; 
+    gap: 15px; 
 }
 
 .footer-column h3 {
     font-weight: 700;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
 }
 
 .footer-column a {
-    text-decoration: none;
-    color: black;
     font-size: 14px;
 }
 
 .footer-column a:hover {
-    color: #0065FC; /* Petit effet bleu au survol, c'est le "plus" du pro */
+    color: #0065FC; 
 }
 
-/* Le code ci-dessous correspond à la version responsive uniquement */
-
-/****** RESPONSIVE FINAL *******/
+/*******************************************/
+/****** RESPONSIVE FINAL (NETTOYÉ) *********/
+/*******************************************/
 
 /* TABLETTE (max 1024px) */
 @media screen and (max-width: 1024px) {
     .container-hebergements-populaires {
-        flex-direction: column; /* On empile les deux blocs */
+        flex-direction: column; 
     }
+    
     .hebergements, .populaires {
         width: 100%;
     }
+    
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .populaires-cards {
         display: flex;
-        flex-direction: row; /* Cartes populaires côte à côte sur tablette */
+        flex-direction: row; 
         gap: 20px;
     }
+    
     .populaires-cards a {
         flex: 1;
     }
@@ -390,51 +388,87 @@ a {
     .main-container {
         padding: 0;
     }
- @media (max-width: 767px) {
-    .populaires-cards {
-        display: flex;
-        flex-direction: column; /* MAGIQUE : Les cartes s'empilent verticalement ! */
-        gap: 20px; /* Optionnel : pour mettre un bel espace entre chaque carte empilée */
-    }
-}
-@media (max-width: 767px) {
+    
     header {
         display: flex;
-        flex-direction: column; /* MAGIQUE : Le menu passe sous le logo ! */
-        align-items: center;    /* Centre le logo et le menu sur l'écran mobile */
-        gap: 20px;              /* Ajoute un peu d'espace vertical entre le logo et tes liens */
-        height: auto;           /* Permet au header de s'agrandir selon sa nouvelle hauteur */
+        flex-direction: column; 
+        align-items: center;    
+        gap: 20px;              
+        height: auto;           
+        padding: 20px;
     }
-}
-@media (max-width: 767px) {
-    /* ... tes autres règles mobiles ... */
+
+    .search-section {
+        padding: 0 20px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .info-bar {
+        padding: 0 20px;
+    }
+
+    .populaires-cards {
+        display: flex;
+        flex-direction: column; 
+        gap: 20px; 
+    }
+
+    .container-hebergements-populaires {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+
+    .hebergements, .populaires {
+        border-radius: 0;
+        padding: 30px 20px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .activites {
+        padding: 0 20px;
+    }
+
+    .activites-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .activites .card {
+        height: auto;
+    }
+
+    .activites .card img {
+        height: 200px; /* Plus adapté aux petits écrans */
+    }
 
     .footer {
         display: flex;
-        flex-direction: column; /* On empile les colonnes "À propos", "Nos hébergements", etc. */
-        gap: 30px;              /* On crée un bel espace vertical entre chaque bloc */
-        padding: 30px 20px;     /* On donne de l'air à l'intérieur du bloc gris */
+        flex-direction: column; 
+        gap: 30px;              
+        padding: 30px 20px;     
     }
     
     .footer-column {
-        width: 100%;            /* Chaque bloc prend toute la largeur pour être bien aligné */
+        width: 100%;            
     }
-}
-    /* Inversion pour avoir les Populaires en haut (Critère OC) */
-    .container-hebergements-populaires {
-        flex-direction: column-reverse;
-    }
+
     .search-form-button .button-text {
-        display: none; /* Cache le texte 'Rechercher' */
+        display: none; 
     }
+
     .search-mobile-icon {
-        display: block !important; /* Affiche la loupe */
+        display: block !important; 
     }
+
     .filters {
         flex-direction: column;
         align-items: flex-start;
-    }
-    .cards-grid, .activites-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur téléphone */
+        padding: 0 20px;
     }
 }
